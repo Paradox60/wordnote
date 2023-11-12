@@ -28,8 +28,10 @@ class WordNote(toga.App):
         self.main_window.content = Library(self)
 
     def  take_value(self,widget):
-
-
+        print(self.input_word.value)
+        print(self.input_translate.value)
+        self.input_word.value = ""
+        self.input_translate.value = ""
 
     def startup(self):
 

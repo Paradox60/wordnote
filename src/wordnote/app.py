@@ -2,7 +2,7 @@
 import toga
 from toga.constants import COLUMN
 from toga.style import Pack
-
+#sdfgsdfgsdfgfdsgdfsg
 from wordnote.wins.main import *
 
 

@@ -23,8 +23,13 @@ class WordNote(toga.App):
     def library(self,widget):
         self.main_window.content = Library(self)
 
+
     def test(self,widget):
         self.main_window.content = Library(self)
+
+    def test1(self,widget):
+        self.main_window.content = Library1(self)
+
 
     def startup(self):
 

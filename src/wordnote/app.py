@@ -1,5 +1,3 @@
-import asyncio
-from datetime import datetime
 
 import toga
 from toga.constants import COLUMN
@@ -11,22 +9,6 @@ class WordNote(toga.App):
     def do_next_content(self, widget):
         self.main_window.content = self.next_box
 
-    def do_prev_content(self, widget):
-        self.main_window.content = self.main_scroller
-
-    def exit_handler(self, app, **kwargs):
-        self.close_count += 1
-        if self.close_count % 2 == 1:
-            self.main_window.info_dialog("Can't close app", "Try that again")
-            return False
-        return True
-
-    def close_handler(self, window, **kwargs):
-        self.close_count += 1
-        if self.close_count % 2 == 1:
-            self.main_window.info_dialog("Can't close window", "Try that again")
-            return False
-        return True
 
     def new(self):
         print('somthing and somthing')

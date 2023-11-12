@@ -3,61 +3,36 @@ import toga
 from toga.constants import COLUMN
 from toga.style import Pack
 
+from wordnote.wins.main import *
+
+
 
 class WordNote(toga.App):
+
+    def refresh_win(self,widget):
+        Add_word(self)
+        Library(self)
+
     # Button callback functions
-    def do_next_content(self, widget):
-        self.main_window.content = self.next_box
+    def add_word(self, widget):
+        self.main_window.content = Add_words(self)
 
+    def main_win(self, widget):
+        self.main_window.content = Main(self)
 
-    def new(self):
-        print('somthing and somthing')
+    def library(self,widget):
+        self.main_window.content = Library(self)
+
+    def test(self,widget):
+        self.main_window.content = self.inner_box
 
     def startup(self):
-        self.close_count = 0
 
-        # Set up main window
+               # Set up main window
         self.main_window = toga.MainWindow()
-        self.on_exit = self.exit_handler
-
-        # Buttons
-        btn_style = Pack(flex=1, padding=5)
-
-        btn_change_content = toga.Button(
-            "Change content", on_press=self.do_next_content, style=btn_style
-        )
-
-        self.inner_box = toga.Box(
-            children=[
-                btn_change_content
-            ],
-            style=Pack(direction=COLUMN),
-        )
-        self.main_scroller = toga.ScrollContainer(
-            horizontal=False,
-            vertical=True,
-            style=Pack(flex=1),
-        )
-        self.main_scroller.content = self.inner_box
-
-        btn_change_back = toga.Button(
-            "Go back", on_press=self.do_prev_content, style=btn_style
-        )
-        self.next_box = toga.Box(
-            children=[btn_change_back], style=Pack(direction=COLUMN)
-        )
-
-        restore_command = toga.Command(
-            self.do_prev_content,
-            text="Restore content",
-            tooltip="Restore main window content",
-        )
-
-        self.commands.add(restore_command)
-        self.main_window.toolbar.add(restore_command)
 
         # Add the content on the main window
-        self.main_window.content = self.main_scroller
+        self.main_window.content = Main(self)
 
         # Show the main window
         self.main_window.show()

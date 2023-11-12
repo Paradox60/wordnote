@@ -29,7 +29,7 @@ class WordNote(toga.App):
         return True
 
     def new(self):
-        print('somthing')
+        print('somthing and somthing')
 
     def startup(self):
         self.close_count = 0

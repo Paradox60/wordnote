@@ -27,8 +27,8 @@ class WordNote(toga.App):
     def test(self,widget):
         self.main_window.content = Library(self)
 
-    def test1(self,widget):
-        self.main_window.content = Library1(self)
+    def  take_value(self,widget):
+
 
 
     def startup(self):

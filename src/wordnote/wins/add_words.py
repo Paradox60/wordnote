@@ -20,7 +20,7 @@ def Add_words(self):
     )
 
     btn_accept = toga.Button(
-        "Accept", on_press=self.main_win, style=btn_style    )
+        "Accept", on_press=self.take_value, style=btn_style    )
     btn_main_win = toga.Button(
         "Back", on_press=self.main_win, style=btn_style
     )

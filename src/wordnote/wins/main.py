@@ -27,7 +27,8 @@ def Main(self):
         style=Pack(direction=COLUMN),
     )
 
-    self.add_words_win = Add_words(self)
-    self.add_library_win = Library(self)
+    #Library_win = Library_win()
+    #self.add_words_win = Add_words(self)
+    #self.add_library_win = Library_win.Library()
 
     return self.inner_box1

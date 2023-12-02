@@ -1,41 +1,42 @@
-
-import toga
-
 from wordnote.wins.main import *
-from wordnote.SqLt.db_base import *
+from wordnote.wins.test import *
 from functions.Foo import *
 
 
 
 class WordNote(toga.App):
 
-    def refresh_win(self,widget):
-        Add_word(self)
-        Library(self)
-
     # Button callback functions
-    def add_word(self, widget):
-        self.main_window.content = Add_words(self)
-
     def main_win(self, widget):
         self.main_window.content = Main(self)
-
-    def library(self,widget):
-        DB = Create_cursor()
-        DB.Create_table()
-        table_length = DB.Number_of_elements()
-        # list_of_words =
-
-
-        self.card = Library_word_card(5)
-        print(self.card)
-        self.main_window.content = Library_win.Show_cards(self)
+    def add_word(self, widget):
+        self.main_window.content = Add_words(self)
+    def library(self, widget):
+        card = Create_library_card()
+        self.main_window.content = Show_cards(self, card)
+    def test(self, widget):
+        card = Create_library_card()
+        self.main_window.content = test_win(self, card)
 
 
-    def test(self,widget):
-        self.main_window.content = Library(self)
+    def delete_handler(self, button_id):
+        async def handler(widget):
+            if await self.main_window.confirm_dialog("Delete card", "A you sure?"):
+                Delete_row(button_id)
+                self.library(self)
+            else:
+                await self.main_window.info_dialog(
+                        "Nothing changed", "Everything is fine"
+                    )
+        return handler
 
-    def  take_value(self,widget):
+    def edit_card(self, card):
+        def handler(widget):
+            Create_new_window_with_data_card(self,card)
+
+        return handler
+
+    def  take_value(self, widget):
         DB = Create_cursor()
         DB.Create_table()
         DB.Print_data()

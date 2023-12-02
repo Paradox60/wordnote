@@ -70,5 +70,66 @@ class Create_cursor():
         # print(i)
         return i
 
+    def Data_list(self):
+
+        select_data = 'SELECT * FROM words'
+        self.cursor.execute(select_data)
+        rows = self.cursor.fetchall()
+        all_lists = []
+        word_id = []
+        learning_words = []
+        translated_words = []
+        progress_list = []
+        sec_time_list = []
+        for row in rows:
+
+            word_id.append(row[0])
+            learning_words.append(row[1])
+            translated_words.append(row[2])
+            progress_list.append(row[3])
+            sec_time_list.append(row[4])
+
+        all_lists.append(word_id)
+        all_lists.append(learning_words)
+        all_lists.append(translated_words)
+        all_lists.append(progress_list)
+        all_lists.append(sec_time_list)
+
+        return all_lists
+
+    def Delete_Record(self,number):
+
+            # Deleting single record now
+            sql_update_query = """DELETE from words where id = ?"""
+            self.cursor.execute(sql_update_query, (number,))
+            self.conn.commit()
+            print("Record deleted successfully ")
+
+
+    def Edit_Word_Record(self, word, word_id):
+
+        sql_update_query = """Update words set  New_word = ?  where id = ?"""
+        data = (word, word_id)
+
+        self.cursor.execute(sql_update_query, data)
+        self.conn.commit()
+
+    def Edit_Translation_Record(self, word, word_id):
+
+        sql_update_query = """Update words set  Translation = ?  where id = ?"""
+        data = (word, word_id)
+
+        self.cursor.execute(sql_update_query, data)
+        self.conn.commit()
+
+    def Edit_Progress_Record(self, word, word_id):
+
+        sql_update_query = """Update words set  Progress = ?  where id = ?"""
+        data = (word, word_id)
+
+        self.cursor.execute(sql_update_query, data)
+        self.conn.commit()
+
+
     def Close_database(self):
         self.conn.close()

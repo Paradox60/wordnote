@@ -15,17 +15,20 @@ def testing_list(self, cards):
     for card in cards:
         if card.progress < 100:
             clean_cards.append(card)
-    print(len(clean_cards))
+    print(clean_cards)
     #if len(clean_cards) < 4:
         #self.delete_handler(8)
     if len(clean_cards) < 20 and len(clean_cards) >= 4:
-        random_numbers = random.sample(range(-1, len(clean_cards)), len(clean_cards))
+
+        random_numbers = random.sample(range(0, len(clean_cards)), len(clean_cards))
+        print(random_numbers)
+
     else:
         random_numbers = random.sample(range(-1, len(clean_cards)), 20)
 
-    for word in random_numbers:
-        id_card.append(clean_cards[word].card_id)
-        word_list.append(clean_cards[word].word)
+    for number in random_numbers:
+        id_card.append(clean_cards[number].card_id)
+        word_list.append(clean_cards[number].word)
     list.append(id_card)
     list.append(word_list)
     print(list)

@@ -3,7 +3,7 @@ from toga.constants import CENTER, COLUMN, HIDDEN, ROW, VISIBLE, RIGHT
 from toga.style import Pack
 
 
-def Show_cards(self,cards):
+def show_cards(self,cards):
     self.cards  = cards
     self.scroll_container = toga.ScrollContainer(style=Pack(flex=1))
     children = []
@@ -80,12 +80,23 @@ def Show_cards(self,cards):
 
 
 class Library_word_card:
-    def __init__(self, card_id, word, translate, progress, sec_time):
+    def __init__(self, card_id, word, translate, progress):
         self.card_id = card_id
         self.word = word
         self.translate = translate
         self.progress = progress
-        self.sec_time = sec_time
+
+    def __repr__(self):
+        return f"card#{self.card_id}"
+
+
+class Test_word_card:
+    def __init__(self, card_id, word, translate, progress):
+        self.card_id = card_id
+        self.word = word
+        self.translate = translate
+        self.progress = progress
+
     def __repr__(self):
         return f"card#{self.card_id}"
 

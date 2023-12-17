@@ -13,11 +13,16 @@ def Main(self):
         "Library", on_press=self.library, style=btn_style
     )
 
+    btn_html_win = toga.Button(
+        "HTML5", on_press=self.html, style=btn_style
+    )
+
     self.inner_box = toga.Box(
         children=[
             btn_add_word_win,
             btn_test_win,
             btn_library_win,
+            btn_html_win,
         ],
         style=Pack(direction=COLUMN),
     )

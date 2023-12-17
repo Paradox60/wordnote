@@ -2,7 +2,7 @@ import toga
 from toga.constants import COLUMN
 from toga.style import Pack
 
-def Add_words(self):
+def add_words(self):
     Padding =5
 
     btn_style = Pack(flex=1, padding=5)
